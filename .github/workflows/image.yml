@@ -39,12 +39,6 @@ jobs:
             type=ref,event=tag,enable=true,priority=600
             type=ref,event=pr,prefix=pr-,enable=true,priority=600
             type=sha,enable=true
-          labels: |
-            org.opencontainers.image.title=go-framework demo
-            org.opencontainers.image.description=A demo application for go-framework
-          sep-tags: ","
-          sep-labels: ","
-          sep-annotations: ","
           images: ghcr.io/${{ github.repository }}
       - name: Build and Push
         id: build-and-push
@@ -55,7 +49,6 @@ jobs:
           load: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          annotations: ${{ steps.meta.outputs.annotations }}
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
       - name: Sign the images with GitHub OIDC Token
