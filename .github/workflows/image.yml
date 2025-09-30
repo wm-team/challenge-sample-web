@@ -45,6 +45,7 @@ jobs:
           sep-tags: ","
           sep-labels: ","
           sep-annotations: ","
+          images: ghcr.io/${{ github.repository }}
       - name: Build and Push
         uses: docker/build-push-action@v4
         with:
